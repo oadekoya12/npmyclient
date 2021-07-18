@@ -15,10 +15,12 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - aws --version
-      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 908883891338.dkr.ecr.us-east-1.amazonaws.com 
-      - REPOSITORY_URI=908883891338.dkr.ecr.us-east-1.amazonaws.com/ecasdas_base_config
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin XXXXXXXXXXXX.dkr.ecr.us-east-1.amazonaws.com 
+      - REPOSITORY_URI=[AWS-DOCKER-REGISTRY]
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
+      - GITHUB_REPO=
+      - REPO_DIR=ecasdas_base_config
   build:
     commands:
       - echo Build started on `date`
@@ -27,8 +29,8 @@ phases:
       - dockerd &> /var/log/dockerd-logfile &
       - ps -aux | grep docker
       - git config --global credential.helper store
-      - git clone https://oadekoya12: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@github.com/GSA/ECASDAS_BASE_CONFIG.git ecasdas_base_config
-      - cd ecasdas_base_config
+      - git clone  $GITHUB_REPO $REPO_DIR
+      - cd $REPO_DIR
       - sh shellenv.sh
       - echo $REPOSITORY_URI && echo $IMAGE_TAG
       - docker build -t $REPOSITORY_URI:latest .
