@@ -1,0 +1,13 @@
+# ignore Data Directory
+ngx/sites-available/*
+!ngx/sites-available/default
+!ngx/sites-available/drupal9.local
+
+src/*
+!src/html
+!src/public
+
+logs/php/*
+!logs/php/.gitignore
+logs/nginx/*
+!logs/nginx/.gitignore

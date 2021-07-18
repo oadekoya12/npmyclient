@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  web:
+    container_name: web
+    privileged: true
+    build:
+      context: .
+    # restart: always
+    # volumes:
+      # - ./ngx/nginx.conf:/etc/nginx/nginx.conf
+      # - ./logs/nginx/:/var/log/nginx/
+      # - ./logs/php/:/var/log/php-fpm/
+      # - ./ngx/sites-enabled/:/etc/nginx/sites-enabled/
+      # - ./src:/var/www
+      # - ./mysql/:/mnt/mysql
+      # - ./system/local/script.sh:/usr/local/script.sh
+      # - ./php/php.ini:/etc/php.ini
+    ports:
+      - "8080:80"
+      - "443:443"
+    extra_hosts:
+      # - "hostaccess:10.27.15.146"
+      - "host.docker.internal:host-gateway"
