@@ -1,6 +1,6 @@
 ## USAGE:
 # For Building Uncomment the Content between this "<========================================>" else uncomment the first "FROM" only
-FROM 908883891338.dkr.ecr.us-east-1.amazonaws.com/ecasdas_base_config
+FROM hillseditor/npmyclient
 ADD ./ngx/sites-enabled/ /etc/nginx/sites-available
 ADD ./ngx/sites-enabled/ /etc/nginx/sites-enabled/
 ADD ./php/www.conf /etc/php-fpm.d/www.conf
