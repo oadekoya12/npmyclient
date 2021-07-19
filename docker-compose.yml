@@ -17,7 +17,5 @@ services:
       # - ./php/php.ini:/etc/php.ini
     ports:
       - "8080:80"
-      - "443:443"
     extra_hosts:
-      # - "hostaccess:10.27.15.146"
       - "host.docker.internal:host-gateway"

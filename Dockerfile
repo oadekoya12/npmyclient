@@ -1,10 +1,10 @@
 ## USAGE:
 # For Building Uncomment the Content between this "<========================================>" else uncomment the first "FROM" only
 FROM hillseditor/npmyclient
-ADD ./ngx/sites-enabled/ /etc/nginx/sites-available
-ADD ./ngx/sites-enabled/ /etc/nginx/sites-enabled/
-ADD ./php/www.conf /etc/php-fpm.d/www.conf
-ADD ./src /var/www
+COPY ./ngx/sites-enabled/ /etc/nginx/sites-available
+COPY ./ngx/sites-enabled/ /etc/nginx/sites-enabled/
+COPY ./php/www.conf /etc/php-fpm.d/www.conf
+COPY ./src /var/www
 COPY ./system/local/script.sh /script.sh
 RUN dos2unix /script.sh
 EXPOSE 80
@@ -46,7 +46,7 @@ ENTRYPOINT  ["sh","/script.sh"]
 # RUN ln -s /usr/local/composer /usr/local/bin/composer
 # WORKDIR /var/www
 
-# EXPOSE 80 443
+# EXPOSE 80
 
 
 # COPY ./system/local/script.sh /script.sh
