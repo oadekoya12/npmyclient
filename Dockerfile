@@ -30,17 +30,17 @@ ENTRYPOINT  ["sh","/script.sh"]
 
 # # End od build
 # RUN mkdir -p /var/www /etc/nginx/sites-enabled/ /run/php-fpm
-# ADD ./system/local/ /usr/local/
+# COPY ./system/local/ /usr/local/
 
 # # Copy Volumes
-# ADD ./ngx/nginx.conf /etc/nginx/nginx.conf
-# ADD ./logs/nginx/ /var/log/nginx/
-# ADD ./logs/php/ a/var/log/php-fpm/
-# ADD ./ngx/sites-enabled/ /etc/nginx/sites-enabled/
-# ADD ./src /var/www
-# ADD ./mysql/ /mnt/mysql
-# ADD ./system/local/script.sh /usr/local/script.sh
-# ADD ./php/php.ini /etc/php.ini
+# COPY ./ngx/nginx.conf /etc/nginx/nginx.conf
+# COPY ./logs/nginx/ /var/log/nginx/
+# COPY ./logs/php/ a/var/log/php-fpm/
+# COPY ./ngx/sites-enabled/ /etc/nginx/sites-enabled/
+# COPY ./src /var/www
+# COPY ./mysql/ /mnt/mysql
+# COPY ./system/local/script.sh /usr/local/script.sh
+# COPY ./php/php.ini /etc/php.ini
 
 # RUN COMPOSER_HOME=/opt/drush COMPOSER_BIN_DIR=/usr/local/bin COMPOSER_VENDOR_DIR=/opt/drush/ /usr/local/composer require drush/drush
 # RUN ln -s /usr/local/composer /usr/local/bin/composer
